@@ -10,6 +10,7 @@
  * Domain Path:       /languages
  * Version:           0.1.0
  * Requires at least: 6.4.1
+ * Tested up to:      6.4.5
  * Requires PHP:      7.4
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,4 +18,12 @@
  * @package         Speedy_Share
  */
 
-// Your code starts here.
+defined('ABSPATH') || exit;
+
+if (!defined('SSHARE_PLUGIN_FILE')) {
+	define('SSHARE_PLUGIN_FILE', __FILE__);
+}
+
+if (!defined('SSHARE_PLUGIN_DIR')) {
+	define('SSHARE_PLUGIN_DIR', dirname(__FILE__) . '/');
+}
