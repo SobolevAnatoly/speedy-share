@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) || exit;
 
 class Template_Render {
 
-	private static string $data_atts;
+	private static string $data_atts = '';
 
 	public function __construct() {
 	}
@@ -14,11 +14,11 @@ class Template_Render {
 	public static function render( array $atts, string $content = '' ): string {
 		if ( ! empty( $atts ) ) {
 			foreach ( $atts as $key => $value ) {
-				self::$data_atts = 'data-' . $atts[ $key ] . '=' . esc_attr( $value ) . ' ';
+				self::$data_atts .= 'data-' . $key . '=' . esc_attr( $value ) . ' ';
 
 			}
 		}
-		$form = '<div {self::data_atts}>' . self::render_name() . self::render_email() . self::render_file() . '</div>';
+		$form = '<div {' . self::$data_atts . '>' . self::render_name() . self::render_email() . self::render_file() . '</div>';
 		return $form;
 	}
 
