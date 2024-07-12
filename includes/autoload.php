@@ -1,14 +1,15 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 define( 'SSHARE_AUTOLOAD', '1.0.0' );
 
 $classmap = array(
 	'SSHARE' => SSHARE_PLUGIN_DIR . 'includes/src/',
 );
-error_log( print_r( $classmap, true ) );
+
 spl_autoload_register(
-	function ( string $classname ) use ( $classmap ) {
-		$parts = explode( '\\', $classname );
-		error_log( print_r( $parts, true ) );
+	function ( string $class_name ) use ( $classmap ) {
+
+		$parts = explode( '\\', $class_name );
 		$namespace = array_shift( $parts );
 		$classfile = array_pop( $parts ) . '.php';
 
@@ -17,13 +18,14 @@ spl_autoload_register(
 		}
 
 		$path = implode( DIRECTORY_SEPARATOR, $parts );
+		$classfile = str_replace( '_', '-', strtolower( $classfile ) );
+		$classfile = 'class-' . $classfile;
 		$file = $classmap[ $namespace ] . $path . DIRECTORY_SEPARATOR . $classfile;
-		error_log( print_r( $file, true ) );
-		if ( ! file_exists( $file ) && ! class_exists( $classname ) ) {
+
+		if ( ! file_exists( $file ) && ! class_exists( $class_name ) ) {
 			return;
 		}
 
-		error_log( print_r( $file, true ) );
 		require_once $file;
 	}
 );

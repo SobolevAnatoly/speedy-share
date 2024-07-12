@@ -32,7 +32,7 @@ namespace SSHARE\Classes\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
-use SSHARE\Classes\Admin\Template_Default;
+use SSHARE\Classes\Admin\Template_Render;
 
 class Register_Shortcode {
 
@@ -47,7 +47,7 @@ class Register_Shortcode {
 
 	public function shortcode_make( $atts, $content ) {
 		error_log( print_r( $atts, true ) );
-		return Template_Default::render( $atts, $content );
+		return Template_Render::render( $atts, $content );
 	}
 
 	private function __clone() {
@@ -56,4 +56,3 @@ class Register_Shortcode {
 	private function __wakeup() {
 	}
 }
-new \SSHARE\Classes\Admin\Register_Shortcode();

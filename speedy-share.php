@@ -36,9 +36,7 @@ if ( ! defined( 'SSHARE_PLUGIN_FILE' ) ) {
 if ( ! defined( 'SSHARE_PLUGIN_DIR' ) ) {
 	define( 'SSHARE_PLUGIN_DIR', __DIR__ . '/' );}
 
-	error_log( 'Loading ' . __FILE__ . ' Done' );
 if ( ! defined( 'SSHARE_AUTOLOAD' ) ) {
-	error_log( 'AUTOLOAD File Path ' . SSHARE_PLUGIN_DIR . 'includes/autoload.php' );
 	require_once SSHARE_PLUGIN_DIR . 'includes/autoload.php';
-	error_log( 'Loading SSHARE_AUTOLOAD ' . SSHARE_AUTOLOAD . ' Done' );
 }
+new \SSHARE\Classes\Admin\Register_Shortcode();
